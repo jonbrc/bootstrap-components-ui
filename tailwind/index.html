@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Aroma - Atividade Tailwind</title>
+  <!-- Tailwind CSS v4 via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- ===== HEADER + NAVBAR ===== -->
+  <header class="bg-gray-900 text-white fixed top-0 inset-x-0 z-40">
+    <nav class="max-w-6xl mx-auto px-4" aria-label="Menu principal">
+      <div class="flex items-center justify-between h-14">
+        <a href="#inicio" class="text-xl font-bold">☕ Café Aroma</a>
+
+        <!-- Botão hambúrguer (só aparece no celular) -->
+        <button id="btnMenu" class="md:hidden p-2 rounded hover:bg-gray-700"
+                aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Menu no desktop -->
+        <ul class="hidden md:flex gap-6">
+          <li><a href="#inicio" class="hover:text-amber-400">Início</a></li>
+          <li><a href="#produtos" class="hover:text-amber-400">Produtos</a></li>
+          <li><a href="#precos" class="hover:text-amber-400">Preços</a></li>
+          <li><a href="#contato" class="hover:text-amber-400">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Menu colapsável no celular -->
+      <ul id="menu" class="hidden md:hidden pb-4 space-y-2">
+        <li><a href="#inicio" class="block py-1 hover:text-amber-400">Início</a></li>
+        <li><a href="#produtos" class="block py-1 hover:text-amber-400">Produtos</a></li>
+        <li><a href="#precos" class="block py-1 hover:text-amber-400">Preços</a></li>
+        <li><a href="#contato" class="block py-1 hover:text-amber-400">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-14">
+
+    <!-- ===== CARROSSEL ===== -->
+    <section id="inicio" class="relative overflow-hidden" aria-label="Destaques" aria-roledescription="carrossel">
+      <!-- Trilho com os slides lado a lado -->
+      <div id="trilho" class="flex transition-transform duration-700 ease-in-out">
+        <div class="w-full shrink-0 relative">
+          <img src="https://picsum.photos/id/1060/1200/450" alt="Barista preparando café" class="w-full h-64 md:h-[450px] object-cover">
+          <div class="absolute bottom-10 inset-x-0 text-center text-white drop-shadow-lg">
+            <h2 class="text-2xl md:text-4xl font-bold">Café especial</h2>
+            <p>Grãos selecionados da Bahia.</p>
+          </div>
+        </div>
+        <div class="w-full shrink-0 relative">
+          <img src="https://picsum.photos/id/431/1200/450" alt="Xícara de café na mesa" class="w-full h-64 md:h-[450px] object-cover">
+          <div class="absolute bottom-10 inset-x-0 text-center text-white drop-shadow-lg">
+            <h2 class="text-2xl md:text-4xl font-bold">Ambiente acolhedor</h2>
+            <p>Lugar perfeito para estudar e conversar.</p>
+          </div>
+        </div>
+        <div class="w-full shrink-0 relative">
+          <img src="https://picsum.photos/id/225/1200/450" alt="Chá e doces" class="w-full h-64 md:h-[450px] object-cover">
+          <div class="absolute bottom-10 inset-x-0 text-center text-white drop-shadow-lg">
+            <h2 class="text-2xl md:text-4xl font-bold">Doces artesanais</h2>
+            <p>Feitos todos os dias.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões anterior/próximo -->
+      <button id="btnAnterior" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white text-2xl w-10 h-10 rounded-full" aria-label="Slide anterior">&#10094;</button>
+      <button id="btnProximo" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white text-2xl w-10 h-10 rounded-full" aria-label="Próximo slide">&#10095;</button>
+
+      <!-- Indicadores (dots) -->
+      <div class="absolute bottom-3 inset-x-0 flex justify-center gap-2">
+        <button class="dot w-3 h-3 rounded-full bg-white" aria-label="Slide 1"></button>
+        <button class="dot w-3 h-3 rounded-full bg-white/50" aria-label="Slide 2"></button>
+        <button class="dot w-3 h-3 rounded-full bg-white/50" aria-label="Slide 3"></button>
+      </div>
+    </section>
+
+    <!-- ===== CARDS ===== -->
+    <section id="produtos" class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-bold text-center mb-8">Nossos Produtos</h2>
+      <!-- 1 coluna no celular, 2 no tablet, 3 no desktop -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+          <img src="https://picsum.photos/id/30/400/250" alt="Café expresso" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">Expresso</h3>
+            <p class="mb-4">Café curto e intenso, extraído na hora.</p>
+            <a href="#precos" class="inline-block bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-700">Ver preço</a>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+          <img src="https://picsum.photos/id/766/400/250" alt="Cappuccino" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">Cappuccino</h3>
+            <p class="mb-4">Café com leite vaporizado e espuma cremosa.</p>
+            <a href="#precos" class="inline-block bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-700">Ver preço</a>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+          <img src="https://picsum.photos/id/292/400/250" alt="Bolo caseiro" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">Bolo caseiro</h3>
+            <p class="mb-4">Fatia de bolo do dia, feito na casa.</p>
+            <a href="#precos" class="inline-block bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-700">Ver preço</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== TABELA ===== -->
+    <section id="precos" class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-bold text-center mb-8">Tabela de Preços</h2>
+      <!-- overflow-x-auto = scroll horizontal no celular -->
+      <div class="overflow-x-auto rounded-lg shadow">
+        <table class="w-full min-w-[600px] text-left bg-white">
+          <caption class="caption-bottom text-sm text-gray-500 py-2">Preços atualizados em 2026</caption>
+          <thead class="bg-gray-900 text-white">
+            <tr>
+              <th scope="col" class="px-4 py-3">#</th>
+              <th scope="col" class="px-4 py-3">Produto</th>
+              <th scope="col" class="px-4 py-3">Categoria</th>
+              <th scope="col" class="px-4 py-3">Tamanho</th>
+              <th scope="col" class="px-4 py-3">Preço</th>
+            </tr>
+          </thead>
+          <!-- [&>tr:nth-child(odd)] = linhas listradas (striped) -->
+          <tbody class="[&>tr:nth-child(odd)]:bg-gray-100 [&>tr]:hover:bg-amber-50">
+            <tr><th scope="row" class="px-4 py-3">1</th><td class="px-4 py-3">Expresso</td><td class="px-4 py-3">Bebida quente</td><td class="px-4 py-3">50 ml</td><td class="px-4 py-3">R$ 6,00</td></tr>
+            <tr><th scope="row" class="px-4 py-3">2</th><td class="px-4 py-3">Cappuccino</td><td class="px-4 py-3">Bebida quente</td><td class="px-4 py-3">200 ml</td><td class="px-4 py-3">R$ 10,00</td></tr>
+            <tr><th scope="row" class="px-4 py-3">3</th><td class="px-4 py-3">Café gelado</td><td class="px-4 py-3">Bebida fria</td><td class="px-4 py-3">300 ml</td><td class="px-4 py-3">R$ 12,00</td></tr>
+            <tr><th scope="row" class="px-4 py-3">4</th><td class="px-4 py-3">Bolo caseiro</td><td class="px-4 py-3">Doce</td><td class="px-4 py-3">Fatia</td><td class="px-4 py-3">R$ 8,00</td></tr>
+            <tr><th scope="row" class="px-4 py-3">5</th><td class="px-4 py-3">Pão de queijo</td><td class="px-4 py-3">Salgado</td><td class="px-4 py-3">Porção</td><td class="px-4 py-3">R$ 7,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== FORMULÁRIO ===== -->
+    <section id="contato" class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-bold text-center mb-8">Fale Conosco</h2>
+      <form id="formContato" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded-lg shadow">
+        <div>
+          <label for="nome" class="block mb-1 font-medium">Nome</label>
+          <input type="text" id="nome" name="nome" required minlength="3"
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+        </div>
+        <div>
+          <label for="email" class="block mb-1 font-medium">E-mail</label>
+          <input type="email" id="email" name="email" required
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+        </div>
+        <div>
+          <label for="telefone" class="block mb-1 font-medium">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(71) 99999-9999"
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+        </div>
+        <div>
+          <label for="assunto" class="block mb-1 font-medium">Assunto</label>
+          <select id="assunto" name="assunto" required
+                  class="w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+            <option value="">Selecione...</option>
+            <option>Dúvida</option>
+            <option>Sugestão</option>
+            <option>Reclamação</option>
+          </select>
+        </div>
+        <div class="md:col-span-2">
+          <label for="mensagem" class="block mb-1 font-medium">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="4" required
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+        </div>
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="bg-gray-900 text-white text-lg px-8 py-3 rounded hover:bg-gray-700">Enviar</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ===== MODAL ===== -->
+  <!-- Overlay semi-transparente (bg-black/50) -->
+  <div id="modal" class="hidden fixed inset-0 z-50 bg-black/50 items-center justify-center p-4"
+       role="dialog" aria-modal="true" aria-labelledby="tituloModal">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+      <div class="flex justify-between items-center border-b px-5 py-3">
+        <h2 id="tituloModal" class="text-lg font-semibold">Confirmar envio</h2>
+        <button class="fechar text-2xl leading-none hover:text-red-600" aria-label="Fechar">&times;</button>
+      </div>
+      <p class="px-5 py-4">Deseja realmente enviar sua mensagem para o Café Aroma?</p>
+      <div class="flex justify-end gap-2 border-t px-5 py-3">
+        <button class="fechar bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancelar</button>
+        <button id="btnConfirmar" class="bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-700">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <p>&copy; 2026 Café Aroma — Atividade de Engenharia de Software (UCSal)</p>
+  </footer>
+
+  <script>
+    // ---------- NAVBAR: abre/fecha o menu no celular ----------
+    const btnMenu = document.getElementById('btnMenu');
+    const menu = document.getElementById('menu');
+    btnMenu.addEventListener('click', () => {
+      const aberto = menu.classList.toggle('hidden') === false;
+      btnMenu.setAttribute('aria-expanded', aberto);
+    });
+
+    // ---------- CARROSSEL ----------
+    const trilho = document.getElementById('trilho');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = dots.length;
+    let slideAtual = 0;
+
+    function irParaSlide(indice) {
+      slideAtual = (indice + totalSlides) % totalSlides; // volta ao início/fim
+      trilho.style.transform = `translateX(-${slideAtual * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-white', i === slideAtual);
+        dot.classList.toggle('bg-white/50', i !== slideAtual);
+      });
+    }
+
+    document.getElementById('btnAnterior').addEventListener('click', () => irParaSlide(slideAtual - 1));
+    document.getElementById('btnProximo').addEventListener('click', () => irParaSlide(slideAtual + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => irParaSlide(i)));
+
+    // Auto-play a cada 5 segundos
+    setInterval(() => irParaSlide(slideAtual + 1), 5000);
+
+    // ---------- FORMULÁRIO + MODAL ----------
+    const form = document.getElementById('formContato');
+    const modal = document.getElementById('modal');
+
+    function abrirModal() {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+    function fecharModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Valida (HTML5) e abre o modal
+    form.addEventListener('submit', (evento) => {
+      evento.preventDefault();
+      if (form.checkValidity()) abrirModal();
+    });
+
+    // Botões de fechar/cancelar
+    document.querySelectorAll('.fechar').forEach(btn => btn.addEventListener('click', fecharModal));
+
+    // Fechar ao clicar fora (no overlay)
+    modal.addEventListener('click', (evento) => {
+      if (evento.target === modal) fecharModal();
+    });
+
+    // Fechar com a tecla Esc
+    document.addEventListener('keydown', (evento) => {
+      if (evento.key === 'Escape') fecharModal();
+    });
+
+    // Confirmar envio
+    document.getElementById('btnConfirmar').addEventListener('click', () => {
+      fecharModal();
+      form.reset();
+      alert('Mensagem enviada com sucesso!');
+    });
+  </script>
+</body>
+</html>
